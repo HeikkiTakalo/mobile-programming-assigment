@@ -1,6 +1,6 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc, } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, query, } from "firebase/firestore";
 import {useEffect, useState} from "react";
-import { db, LOCATIONS_REF } from "./config";
+import { db, LOCATIONS_REF } from "../firebase/Config"
 
 
 export function useFireLocations(){
