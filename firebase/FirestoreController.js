@@ -28,6 +28,6 @@ export function addLocation(name, description, rating) {
     return addDoc(collection(db, LOCATIONS_REF), {
         name,
         description,
-        rating
+        rating,
     }).catch(error => console.log(error.message));
 }

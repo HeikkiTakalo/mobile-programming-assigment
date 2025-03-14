@@ -56,7 +56,6 @@ const AddLocationScreen = () => {
                 style={styles.input}
               />
 
-              {/* Tähtiarviointi keskelle */}
               <View style={styles.starContainer}>
                 <StarRating
                   rating={rating}

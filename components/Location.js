@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import { View, Text, FlatList, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
-import { useFireLocations } from "../firebase/FirestoreController"
+import { useFireLocations } from "../firebase/FirestoreController";
+import { useNavigation } from '@react-navigation/native';
+import { MaterialIcons } from '@expo/vector-icons'; 
 
 const LocationsScreen = () => {
   const locations = useFireLocations();
@@ -21,11 +23,21 @@ const LocationsScreen = () => {
 };
 
 const LocationItem = ({ location }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.card}>
       <Text style={styles.title}>{location.name}</Text>
       <Text style={styles.description}>{location.description}</Text>
       <Text style={styles.rating}>⭐ {location.rating}</Text>
+
+      <TouchableOpacity 
+        style={styles.mapButton} 
+        onPress={() => navigation.navigate('Map', { location: location.location })}
+      >
+        <MaterialIcons name="place" size={24} color="white" />
+        <Text style={styles.mapButtonText}>View on Map</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -61,6 +73,20 @@ const styles = StyleSheet.create({
   rating: {
     fontSize: 16,
     color: '#ffb400',
+  },
+  mapButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#d32f2f',
+    padding: 10,
+    borderRadius: 8,
+    marginTop: 10,
+    justifyContent: 'center',
+  },
+  mapButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    marginLeft: 8,
   },
 });
 
