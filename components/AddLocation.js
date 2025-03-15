@@ -100,7 +100,8 @@ const styles = StyleSheet.create({
   button: { 
     marginTop: 10, 
     paddingVertical: 5, 
-    borderRadius: 8,  
+    borderRadius: 8,
+    backgroundColor: 'blue' 
   }
 });
 
